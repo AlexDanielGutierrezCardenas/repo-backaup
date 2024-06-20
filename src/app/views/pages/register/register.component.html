@@ -1,0 +1,53 @@
+<div class="bg-light dark:bg-transparent min-vh-100 d-flex flex-row align-items-center">
+  <c-container>
+    <c-row class="justify-content-center">
+      <c-col lg="7" md="9" xl="6">
+        <c-card class="mx-4">
+          <c-card-body class="p-4">
+            <form cForm>
+              <h1>
+                <a routerLink="/login"><mat-icon aria-hidden="false" aria-label="Login Back" fontIcon="arrow_back"></mat-icon></a>
+                Registrar Cuenta Nueva
+              </h1>
+              <!-- Sección de mensajes-->
+              @if (message) {
+                <div class="alert alert-{{type}}" role="alert">
+                  {{message}}
+                </div>
+              }
+              <!---------------------->
+
+              <p class="text-body-secondary">Crear tu Cuenta</p>
+              <c-input-group class="mb-3">
+                <span cInputGroupText>&#64;</span>
+                <input autoComplete="email" cFormControl placeholder="Email" name="email" [(ngModel)]="email" />
+              </c-input-group>
+              <c-input-group class="mb-3">
+                <span cInputGroupText>
+                  <svg cIcon name="cilLockLocked"></svg>
+                </span>
+                <input autoComplete="new-password" cFormControl placeholder="Contraseña" type="password" name="password" [(ngModel)]="password" />
+              </c-input-group>
+              <c-input-group class="mb-4">
+                <span cInputGroupText>
+                  <svg cIcon name="cilLockLocked"></svg>
+                </span>
+                <input autoComplete="new-password" cFormControl placeholder="Repetir Contraseña" type="password" name="repeatpassword" [(ngModel)]="repeatpassword" />
+              </c-input-group>
+              <div class="d-grid">
+                <button cButton color="success" (click)="register()">
+                  @if (loadingregister) {
+                    <c-spinner aria-hidden="false" size="sm"></c-spinner>Cargando...
+                  }
+                  @else {
+                    Crear Cuenta
+                  }
+                </button>
+              </div>
+            </form>
+          </c-card-body>
+        </c-card>
+      </c-col>
+    </c-row>
+  </c-container>
+</div>
